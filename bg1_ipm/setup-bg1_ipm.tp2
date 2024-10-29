@@ -52,24 +52,29 @@ LANGUAGE ~English~
 BEGIN @0
 DESIGNATED 0 LABEL ~BG1_IPM_MainComponent~
 
-ACTION_IF NOT(GAME_IS ~bg1ee eet bg1 bgt~) BEGIN
+ACTION_IF NOT(GAME_IS ~bgee eet bg1 bgt~) BEGIN
     FAIL @10
 END
 
-// Hopefully works for directories, will figure it out
-ACTION_BASH_FOR ~%MOD_FOLDER%/BAM~ ~.+$~ BEGIN
-    COPY ~%BASH_FOR_FILESPEC%~ ~override%~
+COPY ~%MOD_FOLDER%/BAM~ ~override~
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons1 BEGIN
+    ~BOOK16~ => ~SPHBO3~
 END
 
-ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons BEGIN
-    ~BOOK16~ => ~SPHBO3~ ~SCPHB3~
+ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons2 BEGIN
+    ~BOOK16~ => ~SCPHB3~
 END
 
-// Hopefully works for the array as values, will figure it out
-ACTION_PHP_EACH item_to_icons AS item => icons
+ACTION_PHP_EACH item_to_icons1 AS item => icon
 BEGIN
    COPY_EXISTING ~%item%.ITM~ ~override~
-       WRITE_ASCIIE 0x003a icons_0
-       WRITE_ASCIIE 0x0058 icons_1
+       WRITE_ASCIIE 0x003a icon
+END
+
+ACTION_PHP_EACH item_to_icons1 AS item => icon
+BEGIN
+   COPY_EXISTING ~%item%.ITM~ ~override~
+       WRITE_ASCIIE 0x0058 icon
 END
 
