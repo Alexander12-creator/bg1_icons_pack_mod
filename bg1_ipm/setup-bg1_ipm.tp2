@@ -65,11 +65,11 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons BEGIN
     ~BOOK16~ => ~SPHBO3~ ~SCPHB3~
 END
 
-// Hopefully works for the array, will figure it out
+// Hopefully works for the array as values, will figure it out
 ACTION_PHP_EACH item_to_icons AS item => icon1, icon2
 BEGIN
-// Do something here
-
-
-
+   COPY_EXISTING ~%item%.ITM~ ~override~
+       WRITE_ASCIIE 0x003a icon1
+       WRITE_ASCIIE 0x0058 icon1
 END
+
