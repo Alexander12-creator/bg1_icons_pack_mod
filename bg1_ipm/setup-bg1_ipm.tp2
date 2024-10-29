@@ -55,3 +55,21 @@ DESIGNATED 0 LABEL ~BG1_IPM_MainComponent~
 ACTION_IF NOT(GAME_IS ~bg1ee eet bg1 bgt~) BEGIN
     FAIL @10
 END
+
+// Hopefully works for directories, will figure it out
+ACTION_BASH_FOR ~%MOD_FOLDER%/BAM~ ~.+$~ BEGIN
+    COPY ~%BASH_FOR_FILESPEC%~ ~override%~
+END
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons BEGIN
+    ~BOOK16~ => ~SPHBO3~ ~SCPHB3~
+END
+
+// Hopefully works for the array, will figure it out
+ACTION_PHP_EACH item_to_icons AS item => icon1, icon2
+BEGIN
+// Do something here
+
+
+
+END
