@@ -69,12 +69,12 @@ END
 ACTION_PHP_EACH item_to_icons1 AS item => icon
 BEGIN
    COPY_EXISTING ~%item%.ITM~ ~override~
-       WRITE_ASCIIE 0x003a icon
+       WRITE_ASCIIE 0x003a ~%icon%~ #8
 END
 
-ACTION_PHP_EACH item_to_icons1 AS item => icon
+ACTION_PHP_EACH item_to_icons2 AS item => icon
 BEGIN
    COPY_EXISTING ~%item%.ITM~ ~override~
-       WRITE_ASCIIE 0x0058 icon
+       WRITE_ASCIIE 0x0058 ~%icon%~ #8
 END
 
