@@ -59,11 +59,59 @@ END
 COPY ~%MOD_FOLDER%/BAM~ ~override~
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons1 BEGIN
-    ~BOOK16~ => ~SPHBO3~
+    ~BOOK16~   => ~IABOOK16~
+    ~RINGJOIA~ => ~IRINGJOI~
+    ~SW1H12~   => ~ISW1H12~
+    ~BOOK40~   => ~IABOOK40~
+    ~BOOK55~   => ~IABOOK55~
+    ~BOOK36~   => ~IABOOK36~
+    ~RINGJOS~  => ~IRINGJOS~
+    ~AMUL13CO~ => ~IAMUL13C~
+    ~ULBOOK54~ => ~ILBOOK54~
+    ~MISC71~   => ~IAMISC71~
+    ~RING19MA~ => ~IRING19M~
+    ~BOOK70~   => ~IABOOK70~
+    ~MISC1C~   => ~IAMISC1C~
+    ~MISC1F~   => ~IAMISC1F~
+    ~BOOK87~   => ~IABOOK87~
+    ~BOOK68~   => ~IABOOK68~
+    // check me!!!! the original icon name was IA1SCRL2J
+    ~SCRL2J~   => ~IASCRL2J~
+    ~RING25~   => ~IARING25~
+    ~MISC78~   => ~IAMISC78~
+    ~SCRL3F~   => ~IASCRL3F~
+    ~SCRLJALA~ => ~ISCRLJAL~
+    ~SCRLTAR~  => ~IA1BNT1S~
+    ~SCRLKAR~  => ~IA1BNT1S~
+    ~SCRLNEI~  => ~IA1BNT1S~
 END
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons2 BEGIN
-    ~BOOK16~ => ~SCPHB3~
+    ~BOOK16~   => ~CABOOK16~
+    ~RINGJOIA~ => ~CRINGJOI~
+    ~SW1H12~   => ~CSW1H12~
+    ~BOOK40~   => ~CABOOK40~
+    ~BOOK55~   => ~CABOOK55~
+    ~BOOK36~   => ~CABOOK36~
+    ~RINGJOS~  => ~CRINGJOS~
+    ~AMUL13CO~ => ~CAMUL13C~
+    ~ULBOOK54~ => ~CLBOOK54~
+    ~MISC71~   => ~CAMISC71~
+    ~RING19MA~ => ~CRING19M~
+    ~BOOK70~   => ~CABOOK70~
+    ~MISC1C~   => ~CAMISC1C~
+    ~MISC1F~   => ~CAMISC1F~
+    ~BOOK87~   => ~CABOOK87~
+    ~BOOK68~   => ~CABOOK68~
+    // check me!!!! the original icon name was IA1SCRL2J
+    ~SCRL2J~   => ~CASCRL2J~
+    ~RING25~   => ~CARING25~
+    ~MISC78~   => ~CAMISC78~
+    ~SCRL3F~   => ~CASCRL3F~
+    ~SCRLJALA~ => ~CSCRLJAL~
+    ~SCRLTAR~  => ~CA1BNT1S~
+    ~SCRLKAR~  => ~CA1BNT1S~
+    ~SCRLNEI~  => ~CA1BNT1S~
 END
 
 ACTION_PHP_EACH item_to_icons1 AS item => icon
