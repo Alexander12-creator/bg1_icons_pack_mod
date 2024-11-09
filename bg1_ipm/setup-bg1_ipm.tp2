@@ -52,7 +52,7 @@ LANGUAGE ~English~
 BEGIN @0
 DESIGNATED 0 LABEL ~BG1_IPM_MainComponent~
 
-ACTION_IF NOT(GAME_IS ~bgee eet bg1 bgt~) BEGIN
+ACTION_IF NOT(GAME_IS ~bgee eet~) BEGIN
     FAIL @10
 END
 
@@ -66,16 +66,12 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons1 BEGIN
     ~BOOK55~   => ~IABOOK55~
     ~BOOK36~   => ~IABOOK36~
     ~RINGJOS~  => ~IRINGJOS~
-    ~AMUL13CO~ => ~IAMUL13C~
-    ~ULBOOK54~ => ~ILBOOK54~
     ~MISC71~   => ~IAMISC71~
-    ~RING19MA~ => ~IRING19M~
     ~BOOK70~   => ~IABOOK70~
     ~MISC1C~   => ~IAMISC1C~
     ~MISC1F~   => ~IAMISC1F~
     ~BOOK87~   => ~IABOOK87~
     ~BOOK68~   => ~IABOOK68~
-    // check me!!!! the original icon name was IA1SCRL2J
     ~SCRL2J~   => ~IASCRL2J~
     ~RING25~   => ~IARING25~
     ~MISC78~   => ~IAMISC78~
@@ -94,16 +90,12 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons2 BEGIN
     ~BOOK55~   => ~CABOOK55~
     ~BOOK36~   => ~CABOOK36~
     ~RINGJOS~  => ~CRINGJOS~
-    ~AMUL13CO~ => ~CAMUL13C~
-    ~ULBOOK54~ => ~CLBOOK54~
     ~MISC71~   => ~CAMISC71~
-    ~RING19MA~ => ~CRING19M~
     ~BOOK70~   => ~CABOOK70~
     ~MISC1C~   => ~CAMISC1C~
     ~MISC1F~   => ~CAMISC1F~
     ~BOOK87~   => ~CABOOK87~
     ~BOOK68~   => ~CABOOK68~
-    // check me!!!! the original icon name was IA1SCRL2J
     ~SCRL2J~   => ~CASCRL2J~
     ~RING25~   => ~CARING25~
     ~MISC78~   => ~CAMISC78~
@@ -126,3 +118,28 @@ BEGIN
        WRITE_ASCIIE 0x0058 ~%icon%~ #8
 END
 
+ACTION_IF (GAME_IS ~bgee eet~) BEGIN
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons1_ee BEGIN
+      ~AMUL13CO~ => ~IAMUL13C~
+      ~ULBOOK54~ => ~ILBOOK54~
+       ~RING19MA~ => ~IRING19M~
+  END
+
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons2_ee BEGIN
+      ~AMUL13CO~ => ~CAMUL13C~
+      ~ULBOOK54~ => ~CLBOOK54~
+      ~RING19MA~ => ~CRING19M~
+  END
+
+  ACTION_PHP_EACH item_to_icons1_ee AS item => icon
+  BEGIN
+     COPY_EXISTING ~%item%.ITM~ ~override~
+         WRITE_ASCIIE 0x003a ~%icon%~ #8
+  END
+
+  ACTION_PHP_EACH item_to_icons2_ee AS item => icon
+  BEGIN
+      COPY_EXISTING ~%item%.ITM~ ~override~
+         WRITE_ASCIIE 0x0058 ~%icon%~ #8
+  END
+END
