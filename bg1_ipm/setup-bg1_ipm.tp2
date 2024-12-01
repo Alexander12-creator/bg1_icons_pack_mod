@@ -80,6 +80,9 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons1 BEGIN
     ~SCRLTAR~  => ~IA1BNT1S~
     ~SCRLKAR~  => ~IA1BNT1S~
     ~SCRLNEI~  => ~IA1BNT1S~
+    ~DAGG07~   => ~IDAGG07~
+    ~POTN47~   => ~IDWPTN47~
+    ~DW#PTN47~   => ~IDWPTN47~
 END
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons2 BEGIN
@@ -104,42 +107,51 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons2 BEGIN
     ~SCRLTAR~  => ~CA1BNT1S~
     ~SCRLKAR~  => ~CA1BNT1S~
     ~SCRLNEI~  => ~CA1BNT1S~
+    ~DAGG07~   => ~CDAGG07~
+    ~POTN47~   => ~CDWPTN47~
+    ~DW#PTN47~ => ~CDWPTN47~
 END
 
 ACTION_PHP_EACH item_to_icons1 AS item => icon
 BEGIN
    COPY_EXISTING ~%item%.ITM~ ~override~
        WRITE_ASCIIE 0x003a ~%icon%~ #8
+       IF_EXISTS
 END
 
 ACTION_PHP_EACH item_to_icons2 AS item => icon
 BEGIN
    COPY_EXISTING ~%item%.ITM~ ~override~
        WRITE_ASCIIE 0x0058 ~%icon%~ #8
+       IF_EXISTS
 END
 
 ACTION_IF (GAME_IS ~bgee eet~) BEGIN
   ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons1_ee BEGIN
       ~AMUL13CO~ => ~IAMUL13C~
       ~ULBOOK54~ => ~ILBOOK54~
-       ~RING19MA~ => ~IRING19M~
+      ~RING19MA~ => ~IRING19M~
+      ~UBSCARIN~ => ~IRING19M~
   END
 
   ACTION_DEFINE_ASSOCIATIVE_ARRAY item_to_icons2_ee BEGIN
       ~AMUL13CO~ => ~CAMUL13C~
       ~ULBOOK54~ => ~CLBOOK54~
       ~RING19MA~ => ~CRING19M~
+      ~UBSCARIN~ => ~CRING19M~
   END
 
   ACTION_PHP_EACH item_to_icons1_ee AS item => icon
   BEGIN
      COPY_EXISTING ~%item%.ITM~ ~override~
          WRITE_ASCIIE 0x003a ~%icon%~ #8
+         IF_EXISTS
   END
 
   ACTION_PHP_EACH item_to_icons2_ee AS item => icon
   BEGIN
       COPY_EXISTING ~%item%.ITM~ ~override~
          WRITE_ASCIIE 0x0058 ~%icon%~ #8
+         IF_EXISTS
   END
 END
